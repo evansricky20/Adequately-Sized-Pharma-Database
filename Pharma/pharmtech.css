@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  font-family: helvetica;
+}
+
+.headbar {
+  background-color: #212a31;
+  height: 75px;
+  margin-bottom: 25px;
+  margin-left: 140px;
+}
+
+.headbar h2 {
+  color: white;
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+
+/* Navbar Section Begin */
+.navbar {
+  background-color: #212a31;
+  width: 15em;
+  height: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+}
+
+.navbar_links {
+  display: flex;
+  text-decoration: none;
+  padding: 27px 10px 10px 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.navbar_home {
+  display: flex;
+  text-decoration: none;
+  padding: 22px 10px 10px 10px;
+  color: white;
+  font-size: 23px;
+  background-color: #212a31;
+  font-weight: bold;
+}
+
+.navbar_links:hover {
+  color: #748d92;
+}
+
+/* Navbar Section End */
+/* Section General Formatting Begin */
+
+.section {
+  display: block;
+  margin: 10px 150px 10px 270px;
+  height: 900px;
+  background-color: #d3d9d4;
+  border-style: solid;
+  border-color: #c8cec9;
+  border-radius: 10px;
+  padding: 2px 2px 2px 2px;
+  margin-top: 5px;
+  position: relative;
+}
+
+.section h2 {
+  margin-left: 5px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.section h3 {
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.section input[type="text"] {
+  font-size: 20px;
+  height: 20px;
+  width: 400px;
+  border: none;
+  border-bottom: 1px solid #212a31;
+  display: inline;
+  margin: 12px;
+  padding: 5px 5px 0px 5px;
+  background-color: #d3d9d4;
+  line-height: 50px;
+}
+
+.section input[type="text"]::placeholder {
+  vertical-align: middle;
+}
+
+.section input[type="text"]:focus {
+  outline: 0;
+}
+
+.section input[type="text"]:focus::placeholder {
+  color: black;
+  font-size: 20px;
+  vertical-align: bottom;
+  transition: color 0.5s;
+}
+
+.section input[type="submit"] {
+  color: black;
+  background-color: #748d92;
+  height: 40px;
+  width: 100px;
+  display: block;
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+}
+
+.section input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.section input[type="submit"]:active {
+  background-color: #697f83;
+  border: solid;
+  border-color: #607477;
+}
+
+/* Section General Formatting End */
+/* Customers Formatting Begin */
+
+#newcustomer_container1 {
+  display: block;
+}
+
+#newcustomer_container2 {
+  display: block;
+}
+
+#newcustomer_container3 {
+  display: block;
+}
+
+/* Customers Formatting End */
+
+#customerResults,
+#prescriptionResults,
+#purchaseResults,
+#doctorResults,
+#pharmacistResults,
+#pharmtechResults,
+#transactionResults,
+#employeeResults,
+#supplierResults {
+  height: 100px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #c8cec9;
+}

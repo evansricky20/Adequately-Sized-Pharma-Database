@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASP Login Page</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="headbar" id="home">
+      <h2>Adequately Sized Pharma Database</h2>
+    </div>
+
+    <div class="container">
+      <form action="login_user.php" method="post">
+        <div class="loginpage">
+          <h2>Login Page</h2>
+          <input
+            type="text"
+            name="login_lname"
+            placeholder="Enter your last name"
+          />
+          <input
+            type="text"
+            name="login_ID"
+            placeholder="Enter your Employee ID"
+          />
+          <input type="submit" name="search_user" value="Login" />
+        </div>
+      </form>
+
+      <div id="loginResults"></div>
+    </div>
+
+    <script>
+      document
+        .querySelector("form")
+        .addEventListener("submit", function (event) {
+          var lastName = document.querySelector('[name="login_lname"]').value;
+          var employeeID = document.querySelector('[name="login_ID"]').value;
+
+          if (!lastName || !employeeID) {
+            event.preventDefault();
+            alert("Please enter all fields");
+          } else {
+            console.log("Submitting");
+          }
+        });
+    </script>
+  </body>
+</html>

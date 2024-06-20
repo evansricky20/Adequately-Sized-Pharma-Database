@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adequately Sized Pharma PharmTech</title>
+    <link rel="stylesheet" href="pharm.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="headbar" id="home">
+      <h2>Pharmtech View</h2>
+    </div>
+
+    <div class="navbar">
+      <a class="navbar_home" href="#home">Adequately Sized Pharma</a>
+      <a class="navbar_links" href="#customer-lookup">Customer Page</a>
+      <a class="navbar_links" href="#purchase-section">Purchases Page</a>
+      <a class="navbar_links" href="#prescription-lookup">Prescription Page</a>
+      <a class="navbar_links" href="#supplier">Supplier Page</a>
+    </div>
+
+    <!-- Customer Section -->
+    <div class="section" id="customer-lookup">
+      <h2>Customers</h2>
+      <h3>Customer Lookup</h3>
+      <form action="search_customer.php" method="get">
+        <input type="text" name="cust_fname" placeholder="First Name" />
+        <input type="text" name="cust_lname" placeholder="Last Name" />
+        <input type="text" name="cust_id" placeholder="Customer ID" />
+        <!-- <input type="date" name="cust_dob" placeholder="Date of Birth" /> -->
+        <input type="submit" name="search_customer" value="Search" />
+      </form>
+      <div id="customerResults"></div>
+
+      <h3>New Customer</h3>
+      <form action="new_customer.php" method="post">
+        <div id="newcustomer_main">
+          <div id="newcustomer_container1">
+            <input type="text" name="cust_fname" placeholder="First Name" />
+            <input type="text" name="cust_lname" placeholder="Last Name" />
+            <input type="date" name="cust_dob" placeholder="Date of Birth" />
+          </div>
+          <div id="newcustomer_container2">
+            <input type="text" name="cust_address" placeholder="Address" />
+            <input
+              type="text"
+              name="cust_phonenumber"
+              placeholder="Phone Number"
+            />
+            <input
+              type="text"
+              name="cust_insurancenum"
+              placeholder="Insurance Number"
+            />
+          </div>
+          <div id="newcustomer_container3">
+            <input type="text" name="cust_id" placeholder="Customer ID" />
+          </div>
+        </div>
+        <!-- <button>Enter</button> -->
+        <input type="submit" name="add_customer" value="Enter" />
+      </form>
+    </div>
+
+    <!-- Purchase Section -->
+    <div class="section" id="purchase-section">
+      <h2>Purchases</h2>
+      <h3>Purchase Lookup</h3>
+      <form action="search_purchase.php" method="get">
+        <input type="text" name="buys_cust_id" placeholder="Customer ID" />
+        <input type="text" name="buys_pres_id" placeholder="Prescription ID" />
+        <input type="submit" name="search_prescription" value="Search" />
+      </form>
+      <div id="purchaseResults"></div>
+
+      <h3>New Purchase</h3>
+      <form action="new_purchase.php" method="post">
+        <input type="text" name="buys_cust_id" placeholder="Customer ID" />
+        <input type="text" name="buys_pres_id" placeholder="Prescription ID" />
+        <input type="date" name="buys_date" placeholder="Date" />
+        <input type="text" name="buys_cost" placeholder="Price" />
+        <input type="submit" name="add_purchase" value="Enter" />
+      </form>
+    </div>
+
+    <!-- Prescription Section -->
+    <div class="section" id="prescription-lookup">
+      <h2>Prescription</h2>
+      <h3>Prescription Lookup</h3>
+      <form action="search_prescription.php" method="get">
+        <input type="text" name="pres_name" placeholder="Prescription Name" />
+        <input type="text" name="pres_id" placeholder="Prescription ID" />
+        <input type="submit" name="search_prescription" value="Search" />
+      </form>
+      <div id="prescriptionResults"></div>
+
+      <h3>New Prescription</h3>
+      <form action="new_prescription.php" method="post">
+        <input type="text" name="pres_name" placeholder="Prescription Name" />
+        <input type="text" name="pres_id" placeholder="Prescription ID" />
+        <input type="text" name="pres_price" placeholder="Prescription Price" />
+        <input type="text" name="pres_stock" placeholder="Prescription Stock" />
+        <input type="text" name="pres_pharm_id" placeholder="Pharmacist ID" />
+        <input type="text" name="pres_tech_id" placeholder="Tech ID" />
+        <input
+          type="text"
+          name="pres_doc_lisc"
+          placeholder="Doctor License Number"
+        />
+        <input type="submit" name="add_prescription" value="Enter" />
+      </form>
+    </div>
+
+    <!-- Supplier Section -->
+    <div class="section" id="supplier">
+      <h2>Supplier Information</h2>
+      <h3>Supplier Lookup</h3>
+      <form action="search_supplier.php" method="get">
+        <input type="text" name="supp_name" placeholder="Supplier name" />
+        <input type="text" name="supp_id" placeholder="Supplier ID" />
+        <input type="submit" name="search_supplier" value="Search" />
+      </form>
+      <div id="supplierResults"></div>
+
+      <h3>New Supplier</h3>
+      <form action="new_supplier.php" method="post">
+        <input type="text" name="supp_name" placeholder="Supplier name" />
+        <input type="text" name="supp_id" placeholder="Supplier ID" />
+        <input type="text" name="supp_address" placeholder="Supplier Address" />
+        <input type="submit" name="enter_supplier" value="Enter" />
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        var formResultsMap = {
+          "search_customer.php": "customerResults",
+          "search_purchase.php": "purchaseResults",
+          "search_prescription.php": "prescriptionResults",
+          "search_supplier.php": "supplierResults",
+        };
+
+        $("form").on("submit", function (e) {
+          e.preventDefault();
+
+          var url = $(this).attr("action");
+          var resultDivId = formResultsMap[url];
+
+          var method = $(this).attr("method");
+          var data = $(this).serialize();
+
+          $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            success: function (response) {
+              $("#" + resultDivId).html(response);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
